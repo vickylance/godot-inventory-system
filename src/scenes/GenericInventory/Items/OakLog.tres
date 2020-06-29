@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/GenericInventory/GenericItem.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Oak Log"
+stackable = true
+maxStackSize = 5
+itemType = 0

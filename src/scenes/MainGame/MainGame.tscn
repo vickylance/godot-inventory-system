@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Test.cs" type="Script" id=1]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="Test" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 127.0
+margin_top = 106.0
+margin_right = 296.0
+margin_bottom = 167.0
+text = "yo press mee!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

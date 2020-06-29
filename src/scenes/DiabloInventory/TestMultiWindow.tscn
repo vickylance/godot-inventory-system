@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/DiabloInventory/Inventory.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Inventory" parent="." instance=ExtResource( 1 )]
+margin_left = 32.3403
+margin_top = 67.7889
+margin_right = 632.34
+margin_bottom = 367.789
+ID = 1
+
+[node name="Inventory2" parent="." instance=ExtResource( 1 )]
+margin_left = 343.467
+margin_top = 223.352
+margin_right = 943.467
+margin_bottom = 523.352
+ID = 2
