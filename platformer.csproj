@@ -69,6 +69,8 @@
     <Compile Include="src\scenes\DiabloInventory\TitleBar.cs" />
     <Compile Include="src\scenes\GenericInventory\GenericItem.cs" />
     <Compile Include="src\scenes\GenericInventory\ItemDatabase.cs" />
+    <Compile Include="src\scenes\VirtualJoystick\JoystickTest.cs" />
+    <Compile Include="src\scenes\VirtualJoystick\ThumbStick.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

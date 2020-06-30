@@ -31,6 +31,10 @@ inventory_grab={
  ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 environment/default_clear_color=Color( 0.227451, 0.188235, 0.301961, 1 )
