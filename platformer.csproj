@@ -61,6 +61,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\scenes\ChatBox\ChatBox.cs" />
     <Compile Include="src\scenes\DiabloInventory\EquipmentSlots.cs" />
     <Compile Include="src\scenes\DiabloInventory\GridBackPack.cs" />
     <Compile Include="src\scenes\DiabloInventory\Inventory.cs" />

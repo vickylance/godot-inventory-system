@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/ChatBox/ChatBox.cs" type="Script" id=1]
+
+[node name="ChatBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -624.0
+margin_bottom = -400.0
+rect_min_size = Vector2( 400, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 400, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatLog" type="RichTextLabel" parent="ChatContainer"]
+margin_right = 400.0
+margin_bottom = 172.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="ChatField" type="HBoxContainer" parent="ChatContainer"]
+margin_top = 176.0
+margin_right = 400.0
+margin_bottom = 200.0
+
+[node name="ChatGroup" type="Label" parent="ChatContainer/ChatField"]
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 19.0
+text = "[Party]"
+
+[node name="ChatInput" type="LineEdit" parent="ChatContainer/ChatField"]
+margin_left = 44.0
+margin_right = 400.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
