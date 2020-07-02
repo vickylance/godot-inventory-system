@@ -68,6 +68,9 @@
     <Compile Include="src\scenes\DiabloInventory\ItemDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\scenes\DiabloInventory\TitleBar.cs" />
+    <Compile Include="src\scenes\Effects\DamagePopup\DamagePopup.cs" />
+    <Compile Include="src\scenes\Effects\ScreenShake\ScreenShake.cs" />
+    <Compile Include="src\scenes\Effects\SlowTime\SlowTime.cs" />
     <Compile Include="src\scenes\GenericInventory\GenericItem.cs" />
     <Compile Include="src\scenes\GenericInventory\ItemDatabase.cs" />
     <Compile Include="src\scenes\SwipeDetector\SwipeDetector.cs" />
