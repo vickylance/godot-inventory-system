@@ -8,14 +8,9 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "SlowTime",
-"language": "GDScript",
-"path": "res://src/scenes/Effects/SlowTime/SlowTime.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"SlowTime": ""
+
 }
 
 [application]
