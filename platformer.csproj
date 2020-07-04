@@ -61,6 +61,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\scenes\Camera\CameraControl.cs" />
     <Compile Include="src\scenes\ChatBox\ChatBox.cs" />
     <Compile Include="src\scenes\DiabloInventory\EquipmentSlots.cs" />
     <Compile Include="src\scenes\DiabloInventory\GridBackPack.cs" />
@@ -73,10 +74,11 @@
     <Compile Include="src\scenes\Effects\SlowTime\SlowTime.cs" />
     <Compile Include="src\scenes\GenericInventory\GenericItem.cs" />
     <Compile Include="src\scenes\GenericInventory\ItemDatabase.cs" />
+    <Compile Include="src\scenes\MainMenu\MainMenu.cs" />
+    <Compile Include="src\scenes\Player\Player.cs" />
     <Compile Include="src\scenes\SwipeDetector\SwipeDetector.cs" />
     <Compile Include="src\scenes\VirtualJoystick\JoystickTest.cs" />
     <Compile Include="src\scenes\VirtualJoystick\ThumbStick.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
