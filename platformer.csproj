@@ -79,6 +79,7 @@
     <Compile Include="src\scenes\SwipeDetector\SwipeDetector.cs" />
     <Compile Include="src\scenes\VirtualJoystick\JoystickTest.cs" />
     <Compile Include="src\scenes\VirtualJoystick\ThumbStick.cs" />
+    <Compile Include="src\scenes\Weapons\Gun\Gun.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

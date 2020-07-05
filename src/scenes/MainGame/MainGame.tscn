@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/Camera/CameraControl.cs" type="Script" id=2]
 [ext_resource path="res://src/resources/TileMaps/GrassTileMap.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/sprites/tilemaps/guns.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/Weapons/Gun/Gun.cs" type="Script" id=5]
 
 [node name="MainGame" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_right = 40.0
+margin_bottom = 14.0
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 5, 5 )
@@ -21,3 +32,15 @@ position = Vector2( 408.399, 254.451 )
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 2 )
+
+[node name="Gun" type="Sprite" parent="."]
+position = Vector2( 329.229, 245.493 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -8 )
+region_enabled = true
+region_rect = Rect2( 105, 39, 24, 35 )
+script = ExtResource( 5 )
+rotationSpeed = 180.0
+offsetAngle = 90.0
+
+[node name="Tween" type="Tween" parent="Gun"]
