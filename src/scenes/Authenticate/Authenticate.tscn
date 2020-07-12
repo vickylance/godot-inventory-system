@@ -1,0 +1,296 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/resources/Fonts/title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/resources/Fonts/bold_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/Authenticate/Form.cs" type="Script" id=3]
+
+[node name="Authenticate" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+anchor_top = 0.000471581
+anchor_right = 1.0
+anchor_bottom = 1.00047
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Form" type="TabContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -304.0
+margin_top = -240.0
+margin_right = 304.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 600, 480 )
+custom_fonts/font = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Tabs" parent="Control/Form"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 600, 400 )
+custom_fonts/font = ExtResource( 2 )
+custom_constants/label_valign_fg = 0
+custom_constants/hseparation = 0
+custom_constants/label_valign_bg = 0
+custom_constants/top_margin = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Form/Login"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Form/Login/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 580.0
+margin_bottom = 404.0
+custom_constants/separation = 20
+
+[node name="AccountLogin" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 1 )
+text = "Login with your account"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Form/Login/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 560.0
+margin_bottom = 120.0
+custom_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 23.0
+
+[node name="EnterUsername" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 156.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+text = "Enter your username:"
+
+[node name="Spacer" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 160.0
+margin_top = 4.0
+margin_right = 354.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+
+[node name="ErrorMessage" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 358.0
+margin_right = 560.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0.207843, 0, 1 )
+text = "• Enter atleast 6 characters"
+
+[node name="Username" type="LineEdit" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 560.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Form/Login/MarginContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 560.0
+margin_bottom = 206.0
+custom_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 560.0
+margin_bottom = 23.0
+
+[node name="EnterPassword" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 157.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+text = "Enter your password:"
+
+[node name="Spacer" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 161.0
+margin_top = 4.0
+margin_right = 354.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+
+[node name="ErrorMessage" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 358.0
+margin_right = 560.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0.207843, 0, 1 )
+text = "• Enter atleast 6 characters"
+
+[node name="Password" type="LineEdit" parent="Control/Form/Login/MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 33.0
+margin_right = 560.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Form/Login/MarginContainer/VBoxContainer"]
+margin_top = 226.0
+margin_right = 560.0
+margin_bottom = 257.0
+
+[node name="CheckBox" type="CheckBox" parent="Control/Form/Login/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 136.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 2 )
+text = "Remember Me"
+
+[node name="Spacer" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 140.0
+margin_top = 8.0
+margin_right = 421.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Form/Login/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 425.0
+margin_right = 560.0
+margin_bottom = 31.0
+alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/Form/Login/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 4.0
+margin_right = 135.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 2 )
+custom_constants/underline_spacing = 8
+text = "Forgot Password?"
+underline = 1
+
+[node name="LoginBtn" type="Button" parent="Control/Form/Login/MarginContainer/VBoxContainer"]
+margin_top = 277.0
+margin_right = 560.0
+margin_bottom = 337.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "LOGIN"
+
+[node name="Status" type="Label" parent="Control/Form/Login/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 357.0
+margin_right = 560.0
+margin_bottom = 380.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0588235, 0.901961, 0.345098, 1 )
+text = "Login successful. Please wait..."
+align = 1
+
+[node name="Signup" type="Tabs" parent="Control/Form"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Form/Signup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Form/Signup/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 580.0
+margin_bottom = 404.0
+custom_constants/separation = 20
+
+[node name="CreateAccount" type="Label" parent="Control/Form/Signup/MarginContainer/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 1 )
+text = "Create an account"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Form/Signup/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 560.0
+margin_bottom = 120.0
+custom_constants/separation = 10
+
+[node name="CreateUsername" type="Label" parent="Control/Form/Signup/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+text = "Create your username:"
+
+[node name="Username" type="LineEdit" parent="Control/Form/Signup/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 560.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Form/Signup/MarginContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 560.0
+margin_bottom = 206.0
+custom_constants/separation = 10
+
+[node name="CreatePassword" type="Label" parent="Control/Form/Signup/MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_right = 560.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+text = "Create your username:"
+
+[node name="Password" type="LineEdit" parent="Control/Form/Signup/MarginContainer/VBoxContainer/VBoxContainer2"]
+margin_top = 33.0
+margin_right = 560.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SignUpBtn" type="Button" parent="Control/Form/Signup/MarginContainer/VBoxContainer"]
+margin_top = 226.0
+margin_right = 560.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 0, 60 )
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "SIGN UP"
+
+[node name="Status" type="Label" parent="Control/Form/Signup/MarginContainer/VBoxContainer"]
+margin_top = 306.0
+margin_right = 560.0
+margin_bottom = 329.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0588235, 0.901961, 0.345098, 1 )
+text = "Sign up successful. Please login with your credentials."
+align = 1
