@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class CameraControl : Camera2D
 {
@@ -17,10 +16,13 @@ public class CameraControl : Camera2D
 	private int panEdgeThreshold = 10;
 	private float zoomFactor = 1.0f;
 	private Vector2 zoomPos = Vector2.Zero;
+	private KinematicBody2D player;
 
 	public override void _Ready()
 	{
 		Input.SetMouseMode(Input.MouseMode.Confined);
+		player = GetTree().Root.FindNode("Player", true, false) as KinematicBody2D;
+		Position = player.Position;
 	}
 
 	public override void _Process(float delta)
@@ -80,6 +82,7 @@ public class CameraControl : Camera2D
 		}
 
 		// update the position to the pan
+		panVector = ClampedVector(panVector, player.Position + new Vector2(-200, -200), player.Position + new Vector2(200, 200));
 		Position = panVector;
 	}
 
@@ -92,17 +95,17 @@ public class CameraControl : Camera2D
 				var mousePosition = mouseEvent.Position;
 				if (mouseEvent.ButtonIndex == (int)ButtonList.WheelUp)
 				{
-					zoomAtPosition(zoomStep, mousePosition);
+					ZoomAtPosition(zoomStep, mousePosition);
 				}
 				if (mouseEvent.ButtonIndex == (int)ButtonList.WheelDown)
 				{
-					zoomAtPosition(1 / zoomStep, mousePosition);
+					ZoomAtPosition(1 / zoomStep, mousePosition);
 				}
 			}
 		}
 	}
 
-	public void zoomAtPosition(float zoomChange, Vector2 zoomPos)
+	public void ZoomAtPosition(float zoomChange, Vector2 zoomPos)
 	{
 		var c0 = GlobalPosition; // camera position
 		var v0 = GetViewport().Size; // vieport size
@@ -115,5 +118,13 @@ public class CameraControl : Camera2D
 		{
 			GlobalPosition = c1;
 		}
+	}
+
+	public Vector2 ClampedVector(Vector2 vec, Vector2 minClampVec, Vector2 maxClampVec)
+	{
+		return new Vector2(
+			Mathf.Clamp(vec.x, minClampVec.x, maxClampVec.x),
+			Mathf.Clamp(vec.y, minClampVec.y, maxClampVec.y)
+		);
 	}
 }
