@@ -88,10 +88,8 @@ public class ChatBox : Control
 		}
 		if (ws.GetPeer(1).IsConnectedToHost())
 		{
-			GD.Print("cnn");
 			if (ws.GetPeer(1).GetAvailablePacketCount() > 0)
 			{
-				GD.Print("cnn ava");
 				var message = ws.GetPeer(1).GetVar();
 				if (message != null)
 				{

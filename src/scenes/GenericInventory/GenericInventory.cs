@@ -2,25 +2,12 @@ using Godot;
 using Godot.Collections;
 using System;
 
-
-public struct InventoryItem
-{
-	public GenericItem itemReference;
-	public int quantity;
-
-	public InventoryItem(GenericItem item, int quantity)
-	{
-		this.itemReference = item;
-		this.quantity = quantity;
-	}
-}
-
 public class GenericInventory : Resource
 {
 	[Signal]
 	public delegate void InventoryChanged(GenericInventory inventory);
 
-	private Array<InventoryItem> _items;
+	private Array<InventoryItem> _items = new Array<InventoryItem>();
 	[Export]
 	public Array<InventoryItem> Items
 	{

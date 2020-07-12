@@ -10,7 +10,6 @@ public class ItemDatabase : Node
 	ItemDatabase()
 	{
 		instance = this;
-		GD.Print("hi im autoloaded");
 	}
 
 	private Array<GenericItem> items = new Array<GenericItem>();
@@ -23,7 +22,7 @@ public class ItemDatabase : Node
 		directory.ListDirBegin(false, true);
 
 		var filename = directory.GetNext();
-		while (filename != null)
+		while (filename != "")
 		{
 			if (!directory.CurrentIsDir())
 			{
@@ -31,11 +30,6 @@ public class ItemDatabase : Node
 			}
 			filename = directory.GetNext();
 		}
-	}
-
-	public override void _Process(float delta)
-	{
-
 	}
 
 	public GenericItem GetItem(string itemName)

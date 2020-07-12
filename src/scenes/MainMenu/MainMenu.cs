@@ -42,7 +42,9 @@ public class MainMenu : Control
 		cf.SetValue("Main", "ResolutionWidth", OS.WindowSize.x);
 		cf.SetValue("Main", "ResolutionHeight", OS.WindowSize.y);
 		if (cf.Save("user://" + cfName) == Error.Ok)
+		{
 			GD.Print("Saving data to: " + OS.GetUserDataDir() + "/" + cfName);
+		}
 	}
 
 	public void Load()

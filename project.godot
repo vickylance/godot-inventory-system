@@ -21,8 +21,8 @@ run/main_scene="res://src/scenes/MainGame/MainGame.tscn"
 [autoload]
 
 ItemDb="*res://src/scenes/DiabloInventory/ItemDB.cs"
-ItemDatabase="res://src/scenes/GenericInventory/ItemDatabase.cs"
-GameManager="res://src/scripts/GameManager.cs"
+ItemDatabase="*res://src/scenes/GenericInventory/ItemDatabase.cs"
+GameManager="*res://src/scripts/GameManager.cs"
 
 [display]
 

@@ -10,7 +10,7 @@ public class GameManager : Node
 
 	public override void _Process(float delta)
 	{
-		if (player != null)
+		if (player == null)
 		{
 			InitializePlayer();
 		}
@@ -18,7 +18,7 @@ public class GameManager : Node
 
 	public void InitializePlayer()
 	{
-		player = GetTree().Root.FindNode("Player") as Player;
+		player = GetTree().Root.FindNode("Player", true, false) as Player;
 		if (player == null)
 		{
 			return;
@@ -31,7 +31,8 @@ public class GameManager : Node
 		var existingInventory = GD.Load("user://inventory.tres") as GenericInventory;
 		if (existingInventory != null)
 		{
-			player.inventory.Items = existingInventory.Items;
+			player.inventory.AddItem("Oak Log", 3);
+			// player.inventory.Items = existingInventory.Items;
 		}
 		else
 		{

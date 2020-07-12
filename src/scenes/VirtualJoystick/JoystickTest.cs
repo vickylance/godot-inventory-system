@@ -13,6 +13,5 @@ public class JoystickTest : KinematicBody2D
 	public override void _Process(float delta)
 	{
 		MoveAndSlide(thumbStick.GetValue() * 300);
-		GD.Print(thumbStick.GetValue());
 	}
 }

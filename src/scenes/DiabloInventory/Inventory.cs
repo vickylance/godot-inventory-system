@@ -32,7 +32,6 @@ public class Inventory : Control
 
 	public override void _GuiInput(InputEvent @event)
 	{
-		GD.Print("Window: ", ID);
 		var cursorPos = GetGlobalMousePosition();
 		if (@event is InputEventMouseButton mouseEvent)
 		{

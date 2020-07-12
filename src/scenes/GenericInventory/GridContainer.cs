@@ -20,11 +20,11 @@ public class GridContainer : Godot.GridContainer
 			n.QueueFree();
 		}
 
-		foreach (InventoryItem item in inventory.Items)
+		for (int i = 0; i < inventory.Items.Count; i++)
 		{
 			var itemLabel = new Label();
-			itemLabel.Text = $"{item.itemReference.name} x{item.quantity}";
 			AddChild(itemLabel);
+			itemLabel.Text = $"{inventory.Items[i].itemReference.name} x{inventory.Items[i].quantity}";
 		}
 	}
 }
