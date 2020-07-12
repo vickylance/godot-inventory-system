@@ -4,6 +4,7 @@ using System;
 public class JoystickTest : KinematicBody2D
 {
 	public ThumbStick thumbStick;
+
 	public override void _Ready()
 	{
 		thumbStick = (ThumbStick)GetTree().Root.FindNode("ThumbStick", true, false);

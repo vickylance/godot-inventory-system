@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/tilemaps/guns.png" type="Texture" id=1]
+[ext_resource path="res://src/scenes/Weapons/Gun/Gun.cs" type="Script" id=2]
+
+[node name="Gun" type="Sprite"]
+position = Vector2( 329.229, 245.493 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -8 )
+region_enabled = true
+region_rect = Rect2( 105, 39, 24, 35 )
+script = ExtResource( 2 )
+rotationSpeed = 180.0
+offsetAngle = 90.0

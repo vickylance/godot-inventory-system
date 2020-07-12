@@ -19,6 +19,8 @@ public class Player : KinematicBody2D
 	[Export]
 	public float turnSpeed = 0.25f;
 
+	public GenericInventory inventory = new GenericInventory();
+
 	private Vector2 velocity = Vector2.Zero;
 	private Tween tween;
 

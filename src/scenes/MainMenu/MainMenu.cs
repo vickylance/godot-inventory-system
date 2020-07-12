@@ -3,6 +3,10 @@ using System;
 
 public class MainMenu : Control
 {
+	[Export]
+	public string cfName = "settings.cgf";
+
+	private ConfigFile cf = new ConfigFile();
 	private Button continueButton;
 	private Button newGameButton;
 	private Button loadGameButton;
@@ -22,6 +26,33 @@ public class MainMenu : Control
 		loadGameButton.Connect("pressed", this, nameof(_LoadGameButtonPressed));
 		optionsButton.Connect("pressed", this, nameof(_OptionsButtonPressed));
 		exitButton.Connect("pressed", this, nameof(_ExitButtonPressed));
+
+		if (cf.Load("user://" + cfName) != Error.Ok)
+		{
+			Save();
+		}
+		else
+		{
+			Load();
+		}
+	}
+
+	public void Save()
+	{
+		cf.SetValue("Main", "ResolutionWidth", OS.WindowSize.x);
+		cf.SetValue("Main", "ResolutionHeight", OS.WindowSize.y);
+		if (cf.Save("user://" + cfName) == Error.Ok)
+			GD.Print("Saving data to: " + OS.GetUserDataDir() + "/" + cfName);
+	}
+
+	public void Load()
+	{
+		GD.Print("Loading data from: " + OS.GetUserDataDir() + "/" + cfName);
+		Vector2 screenSize = new Vector2(
+			(float)cf.GetValue("Main", "ResolutionWidth", OS.WindowSize.x),
+			(float)cf.GetValue("Main", "ResolutionHeight", OS.WindowSize.y)
+		);
+		OS.WindowSize = screenSize;
 	}
 
 	private void _ExitButtonPressed()
