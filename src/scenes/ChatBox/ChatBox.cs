@@ -5,6 +5,9 @@ using System.Collections.ObjectModel;
 
 public class ChatBox : Control
 {
+	[Export]
+	// public string WebsocketUrl = "ws://localhost:3000/socket.io/?EIO=3&transport=websocket";
+	public string websocketUrl = "ws://localhost:3000";
 
 	struct ChatGroup
 	{
@@ -33,7 +36,9 @@ public class ChatBox : Control
 		});
 	private int groupIndex = 0;
 	private string username = "Vickylance";
+	private WebSocketClient ws = new WebSocketClient();
 
+	// virtual methods
 
 	public override void _Ready()
 	{
@@ -42,6 +47,18 @@ public class ChatBox : Control
 		inputField = FindNode("ChatInput") as LineEdit;
 		inputField.Connect("text_entered", this, nameof(_ChatInputEntered));
 		ChangeGroup(0);
+
+		ws.Connect("connection_closed", this, nameof(_ConnectionClosed));
+		ws.Connect("connection_error", this, nameof(_ConnectionClosed));
+		ws.Connect("connection_established", this, nameof(_ConnectionEstablished));
+		ws.Connect("data_received", this, nameof(_OnDataReceived));
+
+		// Initiate connection to the given URL.
+		var err = ws.ConnectToUrl(websocketUrl);
+		if (err != Error.Ok)
+		{
+			GD.Print("Unable to connect");
+		}
 	}
 
 	public override void _Input(InputEvent @event)
@@ -63,6 +80,32 @@ public class ChatBox : Control
 		}
 	}
 
+	public override void _Process(float delta)
+	{
+		if (ws.GetConnectionStatus() == WebSocketClient.ConnectionStatus.Connecting || ws.GetConnectionStatus() == WebSocketClient.ConnectionStatus.Connected)
+		{
+			ws.Poll();
+		}
+		if (ws.GetPeer(1).IsConnectedToHost())
+		{
+			GD.Print("cnn");
+			if (ws.GetPeer(1).GetAvailablePacketCount() > 0)
+			{
+				GD.Print("cnn ava");
+				var message = ws.GetPeer(1).GetVar();
+				if (message != null)
+				{
+					GD.Print($"Receive: {message}");
+				}
+				// var message = System.Text.Encoding.UTF32.GetString((byte[])ws.GetPeer(1).GetVar());
+				// GD.Print($"Receive: {message}");
+				// chatLog.BbcodeText += message;
+			}
+		}
+	}
+
+	// public methods
+
 	public void ChangeGroup(int value)
 	{
 		groupIndex += value;
@@ -80,15 +123,47 @@ public class ChatBox : Control
 
 	public void AddMessage(string username, string text, int group = 0)
 	{
-		chatLog.BbcodeText += $"[color={chatGroups[group].Color}][{username}]: {text}[/color]\n";
+		if (ws.GetPeer(1).IsConnectedToHost())
+		{
+			chatLog.BbcodeText += $"[color={chatGroups[group].Color}][{username}]: {text}[/color]\n";
+		}
 	}
+
+	// private methods
 
 	public void _ChatInputEntered(string text)
 	{
 		if (text != "")
 		{
 			inputField.Text = "";
-			AddMessage(username, text, groupIndex);
+			Error err = ws.GetPeer(1).PutVar(text);
+			if (err == Error.Ok)
+			{
+				AddMessage(username, text, groupIndex);
+			}
+			else
+			{
+				GD.PrintErr("Send chat text failed");
+			}
 		}
+	}
+
+	private void _ConnectionClosed(bool wasClean)
+	{
+		GD.Print("Disconnected: ", wasClean);
+	}
+
+	private void _ConnectionEstablished(string proto)
+	{
+		GD.Print("Connected with protocol: ", proto);
+	}
+
+	private void _OnDataReceived()
+	{
+		// GD.Print("Got data from server: ", ws.GetPeer(1).GetVar());
+		// GD.Print("Got data from server: ", System.Text.Encoding.UTF8.GetString(ws.GetPeer(1).GetPacket()).TrimEnd('\0'));
+
+		var message = ws.GetPeer(1).GetVar().ToString();
+		AddMessage(username, message);
 	}
 }

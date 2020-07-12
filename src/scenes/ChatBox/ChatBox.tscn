@@ -22,16 +22,16 @@ __meta__ = {
 }
 
 [node name="ChatLog" type="RichTextLabel" parent="ChatContainer"]
-margin_right = 400.0
-margin_bottom = 172.0
+margin_right = 656.0
+margin_bottom = 292.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 
 [node name="ChatField" type="HBoxContainer" parent="ChatContainer"]
-margin_top = 176.0
-margin_right = 400.0
-margin_bottom = 200.0
+margin_top = 296.0
+margin_right = 656.0
+margin_bottom = 320.0
 
 [node name="ChatGroup" type="Label" parent="ChatContainer/ChatField"]
 margin_top = 5.0
@@ -41,7 +41,7 @@ text = "[Party]"
 
 [node name="ChatInput" type="LineEdit" parent="ChatContainer/ChatField"]
 margin_left = 44.0
-margin_right = 400.0
+margin_right = 656.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
