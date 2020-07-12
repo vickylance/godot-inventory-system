@@ -15,13 +15,21 @@ _global_script_class_icons={
 
 [application]
 
-config/name="platformer"
-run/main_scene="res://src/scenes/DiabloInventory/Inventory.tscn"
+config/name="Space Game"
+run/main_scene="res://src/scenes/MainGame/MainGame.tscn"
 
 [autoload]
 
 ItemDb="*res://src/scenes/DiabloInventory/ItemDB.cs"
-ItemDatabase="*res://src/scenes/GenericInventory/ItemDatabase.cs"
+ItemDatabase="res://src/scenes/GenericInventory/ItemDatabase.cs"
+GameManager="res://src/scripts/GameManager.cs"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -98,4 +106,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0.227451, 0.188235, 0.301961, 1 )
