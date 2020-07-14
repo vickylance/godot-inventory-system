@@ -48,10 +48,15 @@ public class GameManager : Node
 		// GD.Print("Save inven: ", inventory.Items[0].itemReference.name);
 		// SaveManager.SaveInventory(inventory);
 		GD.Print("inventory: ", inventory.Items);
-		Error err = ResourceSaver.Save("user://inventory.tres", inventory);
+		// var x = new List<GenericItem>();
+		// x.Add(inventory.Items[0].itemReference);
+		Error err = ResourceSaver.Save("user://inventory.tres", inventory, ResourceSaver.SaverFlags.BundleResources);
+		// Error err = (Error)GetTree().Root.GetNode("/root/ResSaver").Call("save_inventory", inventory);
 		if (err != Error.Ok)
 		{
 			GD.Print("Save error");
 		}
+		// GenericItem item = (GenericItem)ResourceLoader.Load("user://inventory.tres");
+		// GD.Print(item.name);
 	}
 }

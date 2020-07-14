@@ -1,13 +1,14 @@
 using Godot;
-using Godot.Collections;
-using System;
+using System.Collections;
+using System.Collections.Generic;
+using GCollection = Godot.Collections;
 
 public sealed class ItemDatabase : Node
 {
 	public static ItemDatabase Instance { get { return instance; } }
 	private static ItemDatabase instance;
 
-	private Array<GenericItem> items = new Array<GenericItem>();
+	public GCollection.Dictionary<string, GenericItem> items = new GCollection.Dictionary<string, GenericItem>();
 
 	ItemDatabase()
 	{
@@ -30,7 +31,8 @@ public sealed class ItemDatabase : Node
 				var itemResourcePath = $"res://src/scenes/GenericInventory/Items/{filename}";
 				var item = GD.Load(itemResourcePath) as GenericItem;
 				item.itemResourcePath = itemResourcePath;
-				items.Add(item);
+				// items2["FIlename"] = item;
+				items.Add(item.name, item);
 			}
 			filename = directory.GetNext();
 		}
@@ -39,13 +41,16 @@ public sealed class ItemDatabase : Node
 
 	public GenericItem GetItem(string itemName)
 	{
-		for (int i = 0; i < items.Count; i++)
+		return items[itemName];
+	}
+
+	public GCollection.Array<GenericItem> GetItems()
+	{
+		var result = new GCollection.Array<GenericItem>();
+		foreach (KeyValuePair<string, GenericItem> itemEntry in items)
 		{
-			if (items[i].name == itemName)
-			{
-				return items[i];
-			}
+			result.Add(itemEntry.Value);
 		}
-		return null;
+		return result;
 	}
 }

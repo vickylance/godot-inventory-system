@@ -11,7 +11,6 @@ public class EquipmentSlots : Panel
 	{
 		slots = new Array<Panel>(GetChildren().OfType<Panel>());           // Create an enumerable object containing Panels
 																		   // slots = GetChildren().OfType<Panel>().ToList();           // Create an enumerable object containing Panels
-
 		for (int i = 0; i < slots.Count; i++)
 		{
 			items[slots[i].Name] = null;

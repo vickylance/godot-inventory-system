@@ -2,22 +2,16 @@ using Godot;
 using Godot.Collections;
 using System;
 
-
-public struct InventoryItem
+public class InventoryItem : Godot.Object // : Resource
 {
 	public GenericItem itemReference;
 	public int quantity;
 
+	public InventoryItem() { }
+
 	public InventoryItem(GenericItem item, int quantity)
 	{
 		this.itemReference = item;
-		// var output = JsonConvert.SerializeObject(item.Save());
-		// GD.Print("Save Generic Item: ", output);
-		// GenericItem x = JsonConvert.DeserializeObject<GenericItem>(output);
-		// GenericItem x1 = ItemDatabase.Instance.GetItem(x.name);
-		// x.texture = x1.texture;
-		// x.mesh = x1.mesh;
-		// GD.Print("Save Generic Item: ", x.texture);
 		this.quantity = quantity;
 	}
 }
@@ -102,6 +96,6 @@ public class GenericInventory : Resource
 			remainingQuantity -= newItem.quantity;
 		}
 
-		// EmitSignal(nameof(InventoryChanged), this);
+		EmitSignal(nameof(InventoryChanged), this);
 	}
 }
