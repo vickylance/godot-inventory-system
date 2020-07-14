@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://src/scenes/GenericInventory/GenericItem.cs" type="Script" id=1]
+[ext_resource path="res://assets/sprites/items/potato.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -8,3 +9,4 @@ name = "Oak Log"
 stackable = true
 maxStackSize = 5
 itemType = 0
+texture = ExtResource( 2 )

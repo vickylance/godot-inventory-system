@@ -75,7 +75,6 @@
     <Compile Include="src\scenes\GenericInventory\GenericInventory.cs" />
     <Compile Include="src\scenes\GenericInventory\GenericItem.cs" />
     <Compile Include="src\scenes\GenericInventory\GridContainer.cs" />
-    <Compile Include="src\scenes\GenericInventory\InventoryItem.cs" />
     <Compile Include="src\scenes\GenericInventory\ItemDatabase.cs" />
     <Compile Include="src\scenes\MainMenu\MainMenu.cs" />
     <Compile Include="src\scenes\Player\Player.cs" />
@@ -84,6 +83,7 @@
     <Compile Include="src\scenes\VirtualJoystick\ThumbStick.cs" />
     <Compile Include="src\scenes\Weapons\Gun\Gun.cs" />
     <Compile Include="src\scripts\GameManager.cs" />
+    <Compile Include="src\scripts\SaveManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

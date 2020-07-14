@@ -2,35 +2,40 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public class ItemDatabase : Node
+public sealed class ItemDatabase : Node
 {
-	static ItemDatabase instance;
 	public static ItemDatabase Instance { get { return instance; } }
+	private static ItemDatabase instance;
+
+	private Array<GenericItem> items = new Array<GenericItem>();
 
 	ItemDatabase()
 	{
 		instance = this;
 	}
 
-	private Array<GenericItem> items = new Array<GenericItem>();
 
 	public override void _Ready()
 	{
-		var directory = new Directory();
+		Directory directory = new Directory();
 
 		directory.Open("res://src/scenes/GenericInventory/Items");
-		directory.ListDirBegin(false, true);
+		directory.ListDirBegin(true, true);
 
-		var filename = directory.GetNext();
+		string filename = directory.GetNext();
 		while (filename != "")
 		{
 			if (!directory.CurrentIsDir())
 			{
-				items.Add(GD.Load($"res://src/scenes/GenericInventory/Items/{filename}") as GenericItem);
+				var itemResourcePath = $"res://src/scenes/GenericInventory/Items/{filename}";
+				var item = GD.Load(itemResourcePath) as GenericItem;
+				item.itemResourcePath = itemResourcePath;
+				items.Add(item);
 			}
 			filename = directory.GetNext();
 		}
 	}
+
 
 	public GenericItem GetItem(string itemName)
 	{

@@ -2,26 +2,48 @@ using Godot;
 using Godot.Collections;
 using System;
 
+
+public struct InventoryItem
+{
+	public GenericItem itemReference;
+	public int quantity;
+
+	public InventoryItem(GenericItem item, int quantity)
+	{
+		this.itemReference = item;
+		// var output = JsonConvert.SerializeObject(item.Save());
+		// GD.Print("Save Generic Item: ", output);
+		// GenericItem x = JsonConvert.DeserializeObject<GenericItem>(output);
+		// GenericItem x1 = ItemDatabase.Instance.GetItem(x.name);
+		// x.texture = x1.texture;
+		// x.mesh = x1.mesh;
+		// GD.Print("Save Generic Item: ", x.texture);
+		this.quantity = quantity;
+	}
+}
+
 public class GenericInventory : Resource
 {
+
 	[Signal]
 	public delegate void InventoryChanged(GenericInventory inventory);
 
-	private Array<InventoryItem> _items = new Array<InventoryItem>();
 	[Export]
-	public Array<InventoryItem> Items
-	{
-		get { return _items; }
-		set
-		{
-			_items = value;
-			EmitSignal(nameof(InventoryChanged), this);
-		}
-	}
+	public Array<InventoryItem> Items = new Array<InventoryItem>();
+	// [Export]
+	// public Array<InventoryItem> Items
+	// {
+	// 	get { return _items; }
+	// 	set
+	// 	{
+	// 		_items = value;
+	// 		EmitSignal(nameof(InventoryChanged), this);
+	// 	}
+	// }
 
 	public InventoryItem GetItem(int index)
 	{
-		return _items[index];
+		return Items[index];
 	}
 
 	public void AddItem(string itemName, int quantity)
@@ -44,7 +66,7 @@ public class GenericInventory : Resource
 
 		if (item.stackable)
 		{
-			for (int i = 0; i < _items.Count; i++)
+			for (int i = 0; i < Items.Count; i++)
 			{
 				// check if we have added the requested number of items to add
 				if (remainingQuantity <= 0)
@@ -53,7 +75,7 @@ public class GenericInventory : Resource
 				}
 
 				// check if the current iteration is the item that we want to add
-				var inventoryItem = _items[i];
+				var inventoryItem = Items[i];
 				if (inventoryItem.itemReference.name != item.name)
 				{
 					continue;
@@ -63,7 +85,7 @@ public class GenericInventory : Resource
 				if (inventoryItem.quantity < maxStackSize)
 				{
 					var originalQuantity = inventoryItem.quantity;
-					inventoryItem.quantity = Math.Min(originalQuantity + remainingQuantity, maxStackSize);
+					inventoryItem.quantity = Mathf.Min(originalQuantity + remainingQuantity, maxStackSize);
 					remainingQuantity -= inventoryItem.quantity - originalQuantity;
 				}
 			}
@@ -72,10 +94,14 @@ public class GenericInventory : Resource
 		while (remainingQuantity > 0)
 		{
 			var newItem = new InventoryItem(item, Math.Min(remainingQuantity, maxStackSize));
-			_items.Add(newItem);
+			GD.Print("newItem: ", newItem.itemReference.name);
+			Items.Add(newItem);
+			var x = Items.IndexOf(newItem);
+			GD.Print(x);
+			GD.Print("newItem after: ", Items[0]);
 			remainingQuantity -= newItem.quantity;
 		}
 
-		EmitSignal(nameof(InventoryChanged), this);
+		// EmitSignal(nameof(InventoryChanged), this);
 	}
 }

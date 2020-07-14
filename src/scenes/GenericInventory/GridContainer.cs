@@ -24,7 +24,8 @@ public class GridContainer : Godot.GridContainer
 		{
 			var itemLabel = new Label();
 			AddChild(itemLabel);
-			itemLabel.Text = $"{inventory.Items[i].itemReference.name} x{inventory.Items[i].quantity}";
+			GenericItem item = inventory.Items[i].itemReference;
+			itemLabel.Text = $"{item.name} x{inventory.Items[i].quantity}";
 		}
 	}
 }
